@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+.imageList {
+    background-color: #000000;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    margin: 2rem;
+}
+
+.imageComponentDiv {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+}
+
+.featuredDiv {
+    max-width: fit-content;
+    margin: 2rem;
+}
+
+.featuredImageComponentDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.singleImageDiv {
+    padding: 1rem;
+    background: antiquewhite;
+}
+
+.featuredSingleImageDiv {
+    padding: 2rem;
+    background: antiquewhite;
+}
+
+.singleImage {
+    width: 10vw;
+    /* border: 2px solid black; */
+}
+
+.featuredSingleImage {
+    width: 25vw;
+}
+
+.title {
+    color: #ffffff;
+}
+
+.featuredTitle {
+    color: #ffffff;
+}
+
+.author {
+    color: #ffffff;
+}
+
+.featuredAuthor {
+    color: #ffffff;
+}
+
+.parentDiv {
+    display: flex;
+    flex-direction: row;
+}
