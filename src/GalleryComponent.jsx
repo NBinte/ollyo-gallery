@@ -12,6 +12,7 @@ import image8 from "../src/images/image-8.webp";
 import image9 from "../src/images/image-9.webp";
 import image10 from "../src/images/image-10.jpeg";
 import image11 from "../src/images/image-11.jpeg";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const GalleryComponent = () => {
     const [data, setData] = useState([
@@ -28,23 +29,74 @@ const GalleryComponent = () => {
         { id: 10, image: image11 },
     ]);
 
+    console.log(data);
+
+    const handleDragDrop = results => {
+        console.log("drag n drop happened", results);
+
+        const { source, destination, type } = results;
+
+        if (!destination) return;
+
+        if (
+            source.droppableId == destination.droppableId &&
+            source.index == destination.index
+        )
+            return;
+
+        if (type === "reorder") {
+            const copiedData = [...data];
+
+            const sourceIndex = source.index;
+            const destinationIndex = destination.index;
+
+            const [removedData] = copiedData.splice(sourceIndex, 1);
+            copiedData.splice(destinationIndex, 0, removedData);
+
+            return setData(copiedData);
+        }
+    };
+
     return (
         <>
-            <div className='parentDiv'>
-                <div className='featuredDiv'>
-                    <FeaturedImageComponent />
+            <DragDropContext onDragEnd={handleDragDrop}>
+                <div className='parentDiv'>
+                    <div className='featuredDiv'>
+                        <FeaturedImageComponent />
+                    </div>
+                    <Droppable droppableId='root' type='reorder'>
+                        {(provided, snapshot) => (
+                            <div
+                                ref={provided.innerRef}
+                                style={{
+                                    backgroundColor: snapshot.isDraggingOver
+                                        ? "#d7caca"
+                                        : "grey",
+                                    margin: "2rem",
+                                    borderRadius: "2rem",
+                                }}
+                                {...provided.droppableProps}
+                            >
+                                <div className='imageList'>
+                                    {data.map((each, index) => {
+                                        return (
+                                            <>
+                                                <div>
+                                                    <ImageComponent
+                                                        imageData={each}
+                                                        index={index}
+                                                    />
+                                                </div>
+                                                {provided.placeholder}
+                                            </>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        )}
+                    </Droppable>
                 </div>
-
-                <div className='imageList'>
-                    {data.map((each, index) => {
-                        return (
-                            <>
-                                <ImageComponent imageData={each} />
-                            </>
-                        );
-                    })}
-                </div>
-            </div>
+            </DragDropContext>
         </>
     );
 };

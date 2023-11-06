@@ -8,11 +8,10 @@ body {
 }
 
 .imageList {
-    background-color: #000000;
+    /* background-color: #000000; */
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     margin: 2rem;
 }
 
@@ -34,7 +33,10 @@ body {
 
 .singleImageDiv {
     padding: 1rem;
-    background: antiquewhite;
+    background: #a55571;
+    margin: 2rem;
+    border: 2px solid black;
+    border-radius: 40px;
 }
 
 .featuredSingleImageDiv {
@@ -52,22 +54,23 @@ body {
 }
 
 .title {
-    color: #ffffff;
+    color: #000000;
 }
 
 .featuredTitle {
-    color: #ffffff;
+    color: #000000;
 }
 
 .author {
-    color: #ffffff;
+    color: #000000;
 }
 
 .featuredAuthor {
-    color: #ffffff;
+    color: #000000;
 }
 
 .parentDiv {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
