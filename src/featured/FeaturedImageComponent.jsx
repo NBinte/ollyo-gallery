@@ -7,9 +7,9 @@ const FeaturedImageComponent = () => {
     return (
         <>
             <div className='featuredImageComponentDiv'>
-                <FeaturedSingleImageComponent />
-                <FeaturedTitleComponent />
-                <FeaturedAuthorComponent />
+                {/* <FeaturedSingleImageComponent /> */}
+                {/* <FeaturedTitleComponent />
+                <FeaturedAuthorComponent /> */}
             </div>
         </>
     );
