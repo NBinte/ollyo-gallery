@@ -29,11 +29,7 @@ const GalleryComponent = () => {
         { id: 10, image: image11 },
     ]);
 
-    console.log(data);
-
     const handleDragDrop = results => {
-        console.log("drag n drop happened", results);
-
         const { source, destination, type } = results;
 
         if (!destination) return;
